@@ -122,14 +122,16 @@ namespace Calcul
         }
        public String BackConvert()
         {
-            if (this.getImage() >= 0)
+            if (this.getImage() == 0) return this.getReal().ToString();
+            else if (this.getImage() >0)
             {
                 return this.getReal().ToString() + '+' + this.getImage().ToString() + 'i';
             }
             else
             {
-                return this.getReal().ToString() + '-' + (this.getImage()).ToString() + 'i';
+                return this.getReal().ToString() + (this.getImage()).ToString() + 'i';
             }
+          
         }
     }
 }

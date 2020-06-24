@@ -17,21 +17,14 @@ namespace Calcul
             InitializeComponent();
         }
 
-        ComplexNum c1 = new ComplexNum(0, 0);
-        int i = 0;
+        
         bool f = false;
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button15_Click(object sender, EventArgs e)
-        {
-
-            //textBox1.Text += "/";
-            i = 4;
-          
-        }
+         
 
         private void button16_Click(object sender, EventArgs e)
         {
@@ -134,54 +127,48 @@ namespace Calcul
         {
             if (f) textBox2.Text += "+";
             else textBox1.Text += "+";
-            i = 1;
-      
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
             if (f) textBox2.Text += "-";
             else textBox1.Text += "-";
-            i = 2;
-           
-           
         }
 
-        private void button12_Click(object sender, EventArgs e)
-        {
-            textBox1.Text += "*";
-            i = 3;
-           
-        }
 
-       private void button11_Click(object sender, EventArgs e)
+
+        private void button11_Click(object sender, EventArgs e)
         {
-           
+
             var cmp1 = new ComplexNum();
             cmp1.Convert(textBox1.Text);
             var cmp2 = new ComplexNum();
             cmp2.Convert(textBox2.Text);
-           
-            switch (comboBox1.SelectedItem.ToString())
+            if (comboBox1.Text == "") MessageBox.Show("Вы не выбрали операцию!", "Error!", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
+            else
             {
-                case "+": cmp1 += cmp2;
-                    break;
-                case "-":cmp1-=cmp2;
-                    break;
-                case "*":cmp1 *=cmp2;
-                    break;
-                case "/":cmp1/=cmp2;
-                    break;
-                default:
-                    MessageBox.Show("Вы не выбрали операцию!");
-                    break;
+                switch (comboBox1.SelectedItem.ToString())
+                {
+                    case "+":
+                        cmp1 += cmp2;
+                        break;
+                    case "-":
+                        cmp1 -= cmp2;
+                        break;
+                    case "*":
+                        cmp1 *= cmp2;
+                        break;
+                    case "/":
+                        cmp1 /= cmp2;
+                        break;
+
+                }
+                textBox3.Text = cmp1.BackConvert();
             }
-            textBox3.Text = cmp1.BackConvert();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
+       
 
-        }
+      
     }
 }
